@@ -1,0 +1,135 @@
+<!-- work on accuracy -->
+
+<html>
+  <head>
+    <title>Moment DateTime Format</title>
+    <!-- reference Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.mi
+n.js"></script>
+  </head>
+  <body>
+
+    <h2>Moment Date</h2>
+
+    <!-- container for Moment.js output -->
+    <div id="displayMoment"></div>
+    <h2>JavaScript Date</h2>
+
+    <!-- container for JavaScript Date output -->
+    <div id="displayJsDate"></div>
+
+    <h2>difference</h2>
+    <div id="difference"></div>
+
+    <h2>Compare Dates</h2>
+    <div id="Compare"></div>
+
+    <script type="text/javascript">
+      (function () {
+        // instantiate a moment object
+        let NowMoment = moment();
+        // instantiate a JavaScript Date object
+        let NowDate = new Date();
+        // display value of moment object in #displayMoment div
+        let eDisplayMoment = document.getElementById("displayMoment");
+        eDisplayMoment.innerHTML = NowMoment;
+        // display value of Date object in #displayJsDate div
+        let eDisplayDate = document.getElementById("displayJsDate");
+        eDisplayDate.innerHTML = NowDate;
+
+      })();
+
+      //Exercise 1 & 2
+      function test () {
+
+        let currentMoment = moment();
+        let currentYear = currentMoment.get('year')
+        let currentMonth = currentMoment.get('month')
+        console.log(currentMoment.get('month'))
+        let currentDay = currentMoment.get('day')
+       
+
+        let birthMoment = moment()
+
+        let birthYear = birthMoment.set('year',2000)
+        let birthMonth = birthMoment.set('month',4)
+        let birthDay = birthMoment.set('day',22)
+        console.log(birthMonth.get('month'))
+       
+/*1*/
+        let differenceYear = currentYear - birthMoment.get('year')
+        let differenceMonth = currentMonth - birthMoment.get('month')
+        let differenceDay = currentDay - birthMoment.get('day')
+
+
+        let difference = document.getElementById("difference");
+/*2*/   difference.innerHTML = 'Difference is '   +  differenceYear + ' years, ' + differenceMonth + ' months and ' + differenceDay + ' days '
+        
+      }
+
+
+      function compareDates() {
+        let currentMoment = moment();
+        let currentYear = currentMoment.get('year')
+        //console.log(currentMoment.get('year'))
+        let currentMonth = currentMoment.get('month')
+        let currentDay = currentMoment.get('day')
+
+        let newMoment1  = moment()
+        newMoment1.set('year', 2013);
+        newMoment1.set('month', 3);  // April
+        newMoment1.set('day', 1);
+
+        let newMoment2  = moment()
+        newMoment2.set('year', 2019);
+        newMoment2.set('month', 8);  // April
+        newMoment2.set('day', 20);
+
+        console.log()
+        if ( newMoment1.diff(currentMoment, 'year') * -1 < newMoment2.diff(currentMoment, 'year') * -1 ) {
+          // console.log( newMoment1 +  " is closer ")
+        let compare = document.getElementById("Compare");
+/*2*/   compare.innerHTML = newMoment2.get('day')  + "," + newMoment2.get('month') + "," + newMoment2.get('year') +   " is closer " 
+        
+        } else {
+        let compare = document.getElementById("Compare");
+        compare.innerHTML = newMoment2.get('day')  + "/" + newMoment2.get('month') + "/" + newMoment2.get('year') +   " is closer " 
+        }
+
+        if ( newMoment1.diff(currentMoment, 'year') * -1 == newMoment2.diff(currentMoment, 'year') * -1) {
+          if(newMoment1.diff(currentMoment, 'month') * -1   <  newMoment2.diff(currentMoment, 'month') * -1) {
+        let compare = document.getElementById("Compare");
+        compare.innerHTML = newMoment1.get('day')  + "/" + newMoment1.get('month') + "/" + newMoment1.get('year') +   " is closer " 
+          } else {
+        let compare = document.getElementById("Compare");
+        compare.innerHTML = newMoment2.get('day')  + "/" + newMoment2.get('month') + "/" + newMoment2.get('year') +   " is closer " 
+          }
+        }
+
+        if(newMoment1.diff(currentMoment, 'year') * -1 == newMoment2.diff(currentMoment, 'year') * -1) {
+          if(newMoment1.diff(currentMoment, 'month') * -1   ==  newMoment2.diff(currentMoment, 'month')) {
+            if(newMoment1.diff(currentMoment, 'day') * -1   < newMoment2.diff(currentMoment, 'day') * -1) {
+        let compare = document.getElementById("Compare");
+        compare.innerHTML = newMoment1.get('day')  + "/" + newMoment1.get('month') + "/" + newMoment1.get('year') +   " is closer " 
+            } else {
+        let compare = document.getElementById("Compare");
+        compare.innerHTML = newMoment2.get('day')  + "/" + newMoment2.get('month') + "/" + newMoment2.get('year') +   " is closer " 
+            }
+
+          }
+
+        }
+          
+      }
+
+      function beforeOrAfter () {
+      }
+
+      //Time in London --> got this code form the documentation but it does not work? 
+      moment.tz("2012-03-11 01:59:59", "Europe/London").format()
+
+      test()
+      compareDates()
+    </script>
+  </body>
+</html>

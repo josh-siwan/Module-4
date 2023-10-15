@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin-left: 50%;
+        animation-name: slide;
+        animation-duration: 7s;
+        animation-direction: alternate;
+        animation-timing-function: linear;
+      }
+
+       @keyframes slide {
+        from {
+            margin-top: 5%;
+        }
+
+        50% {
+          margin-top: 40%;
+          background-color: blue;
+        }
+
+        to {
+            margin-top: 5%;
+        }
+      } 
+    </style> 
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
